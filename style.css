@@ -144,13 +144,10 @@ footer {
         grid-template-columns: 1fr;
     }
 }
-#about p {
-    margin-bottom: 40px;
-}
-#about p {
-    margin: 0 0 35px 0 !important;
+#about > p {
+    margin-bottom: 35px !important;
 }
 
-#about p:last-child {
+#about > p:last-child {
     margin-bottom: 0 !important;
 }
