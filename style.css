@@ -145,5 +145,12 @@ footer {
     }
 }
 #about p {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+}
+#about p {
+    margin: 0 0 35px 0 !important;
+}
+
+#about p:last-child {
+    margin-bottom: 0 !important;
 }
