@@ -144,3 +144,6 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+#about p {
+    margin-bottom: 20px;
+}
