@@ -151,3 +151,13 @@ footer {
 #about > p:last-child {
     margin-bottom: 0 !important;
 }
+.footer-credit {
+    font-size: 13px;
+}
+.footer-credit {
+    font-size: 10px;
+}
+.footer-credit {
+    font-size: 10px;
+    line-height: 1.3;
+}
