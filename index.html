@@ -6,20 +6,57 @@
 
     <title>DBHS Inkspire Club</title>
 
-    <link rel="stylesheet" href="./style.css?v=2">
+   <link rel="stylesheet" href="./style.css?v=5">
 </head>
 
 <body>
     <header>
-        <nav>
-            <h1>Inkspire</h1>
+       <nav class="navbar">
+    <a class="logo" href="#">INKSPIRE</a>
 
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#join">Join Us</a>
+    <div class="nav-links">
+        <a href="#">HOME</a>
+
+        <div class="dropdown">
+            <button class="drop-button">
+                PROJECTS <span>⌄</span>
+            </button>
+
+            <div class="dropdown-menu">
+                <a href="#projects">Coloring Books</a>
+                <a href="#projects">Bookmarks</a>
+                <a href="#projects">Art Kits</a>
+                <a href="#projects">Others</a>
             </div>
-        </nav>
+        </div>
+
+        <div class="dropdown">
+    <button class="drop-button">
+        GALLERY PROJECTS <span>⌄</span>
+    </button>
+
+    <div class="dropdown-menu">
+        <a href="gallery.html">View All Projects</a>
+        <a href="gallery.html#artwork">Artwork</a>
+        <a href="gallery.html#events">Events</a>
+    </div>
+</div>
+
+        <a href="#join">JOIN US</a>
+
+        <div class="dropdown">
+            <button class="drop-button">
+                ABOUT US <span>⌄</span>
+            </button>
+
+            <div class="dropdown-menu">
+                <a href="#about">Our Club</a>
+                <a href="#officers">Officers</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>
 
         <section class="hero">
             <p class="label">DBHS INKSPIRE CLUB</p>
@@ -60,24 +97,61 @@
 </section>
 
         <section id="projects">
-            <h2>Our Projects</h2>
+            <h2>Projects Overview</h2>
+            
+               <p>
+        <strong>Note:</strong>
+        For more examples, please check
+        <a href="gallery.html">Gallery Projects</a>
+        from the navigation menu above.
+    </p>
+<div class="project-showcase">
+    <div class="showcase-slide active">
+        <img
+            src="images/cozy-afternoon.png"
+            alt="Cozy Afternoon artwork"
+        >
+        <h3>Cozy Afternoon</h3>
+    </div>
 
-            <div class="cards">
-                <article class="card">
-                    <h3>Coloring Books</h3>
-                    <p>Original illustrations designed and assembled by students.</p>
-                </article>
+    <div class="showcase-slide">
+        <img
+            src="images/star-catcher.jpeg"
+            alt="Star Catcher coloring page"
+        >
+        <h3>Star Catcher</h3>
+    </div>
 
-                <article class="card">
-                    <h3>Creative Art Kits</h3>
-                    <p>Fun activity packages containing crafts, puzzles, and art supplies.</p>
-                </article>
+    <button
+        class="showcase-arrow showcase-previous"
+        type="button"
+        aria-label="Previous artwork"
+    >
+        &#10094;
+    </button>
 
-                <article class="card">
-                    <h3>Community Programs</h3>
-                    <p>Art activities organized with libraries and community partners.</p>
-                </article>
-            </div>
+    <button
+        class="showcase-arrow showcase-next"
+        type="button"
+        aria-label="Next artwork"
+    >
+        &#10095;
+    </button>
+</div>
+
+<div class="showcase-dots">
+    <button
+        class="showcase-dot active"
+        type="button"
+        aria-label="Show Cozy Afternoon"
+    ></button>
+
+    <button
+        class="showcase-dot"
+        type="button"
+        aria-label="Show Star Catcher"
+    ></button>
+</div>
         </section>
 
         <section id="join">
@@ -100,7 +174,53 @@
     <p class="footer-credit">Creator of website: Yinhang(Yulisa) Wu</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+    const slides = document.querySelectorAll(".showcase-slide");
+    const dots = document.querySelectorAll(".showcase-dot");
+    const previousButton = document.querySelector(".showcase-previous");
+    const nextButton = document.querySelector(".showcase-next");
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach(function (slide) {
+            slide.classList.remove("active");
+        });
+
+        dots.forEach(function (dot) {
+            dot.classList.remove("active");
+        });
+
+        currentSlide = (index + slides.length) % slides.length;
+
+        slides[currentSlide].classList.add("active");
+
+        if (dots[currentSlide]) {
+            dots[currentSlide].classList.add("active");
+        }
+    }
+
+    if (previousButton && nextButton && slides.length > 0) {
+        previousButton.addEventListener("click", function () {
+            showSlide(currentSlide - 1);
+        });
+
+        nextButton.addEventListener("click", function () {
+            showSlide(currentSlide + 1);
+        });
+
+        dots.forEach(function (dot, index) {
+            dot.addEventListener("click", function () {
+                showSlide(index);
+            });
+        });
+
+        setInterval(function () {
+            showSlide(currentSlide + 1);
+        }, 4000);
+    }
+</script>
+
 </body>
 </html>
 

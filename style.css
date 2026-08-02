@@ -22,28 +22,88 @@ header {
         linear-gradient(135deg, #fff7ed, #fce7f3);
 }
 
-nav {
-    max-width: 1100px;
+.navbar {
+    max-width: 1200px;
     margin: auto;
-    padding: 24px;
+    padding: 30px 40px;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    z-index: 100;
 }
 
-nav h1 {
-    font-size: 28px;
+.logo {
+    color: #292420;
+    font-size: 25px;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 1px;
 }
 
 .nav-links {
     display: flex;
-    gap: 24px;
+    align-items: center;
+    gap: 42px;
 }
 
-.nav-links a {
+.nav-links > a,
+.drop-button {
+    color: #292420;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-links > a:hover,
+.drop-button:hover {
+    opacity: 0.65;
+}
+
+.drop-button span {
+    margin-left: 5px;
+    font-size: 17px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 175px;
+    padding: 10px 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 18px;
     color: #292420;
     text-decoration: none;
-    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    background: #fff1eb;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 .hero {
@@ -160,4 +220,138 @@ footer {
 .footer-credit {
     font-size: 10px;
     line-height: 1.3;
+}
+/* Large project slideshow */
+
+.project-showcase {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 16 / 9;
+    margin: 35px auto 0;
+    overflow: hidden;
+
+    background: #292420;
+    border-radius: 20px;
+}
+
+.showcase-slide {
+    display: none;
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+.showcase-slide.active {
+    display: block;
+}
+
+.showcase-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+
+    object-fit: contain;
+}
+
+.showcase-slide h3 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: 0;
+    padding: 45px 30px 22px;
+
+    color: white;
+    font-size: 27px;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.85)
+    );
+}
+
+.showcase-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    color: white;
+    background: rgba(0, 0, 0, 0.55);
+
+    font-size: 24px;
+    cursor: pointer;
+
+    transform: translateY(-50%);
+}
+
+.showcase-arrow:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.showcase-previous {
+    left: 18px;
+}
+
+.showcase-next {
+    right: 18px;
+}
+
+.showcase-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    max-width: 1000px;
+    margin: 18px auto 0;
+}
+
+.showcase-dot {
+    width: 11px;
+    height: 11px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #c8bdb7;
+    cursor: pointer;
+}
+
+.showcase-dot.active {
+    background: #292420;
+}
+
+@media (max-width: 700px) {
+    .project-showcase {
+        aspect-ratio: 4 / 3;
+    }
+
+    .showcase-slide h3 {
+        padding: 35px 20px 18px;
+        font-size: 21px;
+    }
+
+    .showcase-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 19px;
+    }
+}
+.showcase-arrow {
+    z-index: 20;
+    pointer-events: auto;
+}
+
+.showcase-slide h3 {
+    pointer-events: none;
 }
