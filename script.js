@@ -4,11 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const previousButton = document.querySelector(".showcase-previous");
     const nextButton = document.querySelector(".showcase-next");
 
-    console.log("Slides found:", slides.length);
-    console.log("Dots found:", dots.length);
-
-    if (!slides.length || !previousButton || !nextButton) {
-        console.error("Slideshow elements were not found.");
+    if (slides.length === 0) {
         return;
     }
 
@@ -16,11 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let slideshowTimer;
 
     function showSlide(index) {
-        slides.forEach((slide) => {
+        slides.forEach(function (slide) {
             slide.classList.remove("active");
         });
 
-        dots.forEach((dot) => {
+        dots.forEach(function (dot) {
             dot.classList.remove("active");
         });
 
@@ -33,31 +29,35 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function startSlideshow() {
+    function startAutomaticSlideshow() {
         clearInterval(slideshowTimer);
 
         slideshowTimer = setInterval(function () {
             showSlide(currentSlide + 1);
-        }, 5000);
+        }, 4000);
     }
 
-    previousButton.addEventListener("click", function () {
-        showSlide(currentSlide - 1);
-        startSlideshow();
-    });
+    if (previousButton) {
+        previousButton.addEventListener("click", function () {
+            showSlide(currentSlide - 1);
+            startAutomaticSlideshow();
+        });
+    }
 
-    nextButton.addEventListener("click", function () {
-        showSlide(currentSlide + 1);
-        startSlideshow();
-    });
+    if (nextButton) {
+        nextButton.addEventListener("click", function () {
+            showSlide(currentSlide + 1);
+            startAutomaticSlideshow();
+        });
+    }
 
     dots.forEach(function (dot, index) {
         dot.addEventListener("click", function () {
             showSlide(index);
-            startSlideshow();
+            startAutomaticSlideshow();
         });
     });
 
     showSlide(0);
-    startSlideshow();
+    startAutomaticSlideshow();
 });

@@ -236,17 +236,26 @@ footer {
 }
 
 .showcase-slide {
-    display: none;
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 1.5s ease-in-out,
+        visibility 1.5s ease-in-out;
 }
 
 .showcase-slide.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
+
 
 .showcase-slide img {
     display: block;
@@ -256,7 +265,6 @@ footer {
 
     object-fit: contain;
 }
-
 .showcase-slide h3 {
     position: absolute;
     right: 0;
@@ -355,3 +363,4 @@ footer {
 .showcase-slide h3 {
     pointer-events: none;
 }
+
