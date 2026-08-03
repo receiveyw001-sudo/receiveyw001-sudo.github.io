@@ -13,19 +13,25 @@
     <header>
        <nav class="navbar">
     <a class="logo" href="#">INKSPIRE</a>
-
+<button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+>
+    ☰
+</button>
     <div class="nav-links">
         <a href="#">HOME</a>
 
        <a href="#projects">PROJECT OVERVIEW</a>
 
-        <div class="dropdown">
-    <button class="drop-button">
+      <div class="dropdown">
+    <a class="drop-button" href="gallery.html">
         GALLERY PROJECTS <span>⌄</span>
-    </button>
+    </a>
 
     <div class="dropdown-menu">
-        <a href="gallery.html">View All Projects</a>
         <a href="gallery.html#artwork">Artwork</a>
         <a href="gallery.html#events">Events</a>
     </div>
@@ -207,7 +213,77 @@
         }, 4000);
     }
 </script>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("page-loaded");
 
+        const navigationLinks = document.querySelectorAll(
+            ".navbar a[href]"
+        );
+
+        navigationLinks.forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                const destination = link.getAttribute("href");
+
+                if (
+                    !destination ||
+                    destination.startsWith("mailto:") ||
+                    destination.startsWith("http")
+                ) {
+                    return;
+                }
+
+                /* Links to sections on the current page */
+                if (destination.startsWith("#")) {
+                    const target = document.querySelector(destination);
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                    target.classList.remove("section-fade");
+
+                    requestAnimationFrame(function () {
+                        target.classList.add("section-fade");
+                    });
+
+                    setTimeout(function () {
+                        target.classList.remove("section-fade");
+                    }, 700);
+
+                    return;
+                }
+
+                /* Links that open another HTML page */
+                if (
+                    destination.includes(".html") &&
+                    !event.ctrlKey &&
+                    !event.metaKey
+                ) {
+                    event.preventDefault();
+
+                    document.body.classList.add("page-leaving");
+
+                    setTimeout(function () {
+                        window.location.href = destination;
+                    }, 400);
+                }
+            });
+        });
+    });
+
+    window.addEventListener("pageshow", function () {
+        document.body.classList.remove("page-leaving");
+        document.body.classList.add("page-loaded");
+    });
+</script>
 </body>
 </html>
 <script src="./script.js?v=3"></script>

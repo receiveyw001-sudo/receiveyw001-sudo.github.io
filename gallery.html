@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Inkspire Gallery</title>
-    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="./style.css?v=6">
 </head>
 
 <body>
     <header class="gallery-header">
    <nav class="navbar">
     <a class="logo" href="index.html">INKSPIRE</a>
-
+<button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+>
+    ☰
+</button>
     <div class="nav-links">
         <a href="index.html">HOME</a>
 
@@ -24,11 +31,9 @@
             </a>
 
             <div class="dropdown-menu">
-                <a href="#coloring-pages">Coloring Pages</a>
-                <a href="#bookmarks">Bookmarks</a>
-                <a href="#art-kits">Art Kits</a>
-                <a href="#others">Others</a>
-            </div>
+        <a href="gallery.html#artwork">Artwork</a>
+        <a href="gallery.html#events">Events</a>
+    </div>
         </div>
 
         <a href="index.html#join">JOIN US</a>
@@ -58,38 +63,164 @@
         </section>
     </header>
 
-    <main>
-        <section id="artwork">
-            <h2>Artwork</h2>
+   <main>
+    <section id="artwork">
+        <h2>Artwork</h2>
+<div class="category-grid">
+        <div id="coloring-pages" class="gallery-category">
+            <h3 class="category-title">Coloring Pages</h3>
 
-            <div class="cards">
-                <article class="card">
-                    <h3>Coloring Pages</h3>
-                    <p>Completed coloring-page designs will appear here.</p>
-                </article>
+            <div class="category-slideshow">
+                <div class="category-showcase">
+                    <div class="category-slide active">
+                        <img
+                            src="images/star-catcher.jpeg"
+                            alt="Star Catcher coloring page"
+                        >
+                        <h3>Star Catcher</h3>
+                    </div>
 
-                <article class="card">
-                    <h3>Bookmarks</h3>
-                    <p>Member-designed bookmarks will appear here.</p>
-                </article>
+                    <div class="category-slide">
+                        <img
+                            src="images/cozy-afternoon.png"
+                            alt="Cozy Afternoon coloring page"
+                        >
+                        <h3>Cozy Afternoon</h3>
+                    </div>
 
-                <article class="card">
-                    <h3>Art Kits</h3>
-                    <p>Photos of completed art kits will appear here.</p>
-                </article>
+                    <button
+                        class="category-arrow category-previous"
+                        type="button"
+                        aria-label="Previous coloring page"
+                    >
+                        &#10094;
+                    </button>
 
-                <article class="card">
-                    <h3>Others</h3>
-                    <p>Other completed designs by Inkspire members.</p>
-                </article>
+                    <button
+                        class="category-arrow category-next"
+                        type="button"
+                        aria-label="Next coloring page"
+                    >
+                        &#10095;
+                    </button>
+                </div>
+
+                <div class="category-dots"></div>
             </div>
-        </section>
+        </div>
 
-        <section id="events">
-            <h2>Events</h2>
-            <p>Photos from Inkspire events and library collaborations will appear here.</p>
-        </section>
-    </main>
+        <div id="bookmarks" class="gallery-category">
+            <h3 class="category-title">Bookmarks</h3>
+
+            <div class="category-slideshow">
+                <div class="category-showcase">
+                    <div class="category-slide active">
+                        <img
+                            src="images/bookmark-one.jpg"
+                            alt="Inkspire bookmark"
+                        >
+                        <h3>Bookmark Design</h3>
+                    </div>
+
+                    <button
+                        class="category-arrow category-previous"
+                        type="button"
+                        aria-label="Previous bookmark"
+                    >
+                        &#10094;
+                    </button>
+
+                    <button
+                        class="category-arrow category-next"
+                        type="button"
+                        aria-label="Next bookmark"
+                    >
+                        &#10095;
+                    </button>
+                </div>
+
+                <div class="category-dots"></div>
+            </div>
+        </div>
+
+        <div id="art-kits" class="gallery-category">
+            <h3 class="category-title">Art Kits</h3>
+
+            <div class="category-slideshow">
+                <div class="category-showcase">
+                    <div class="category-slide active">
+                        <img
+                            src="images/art-kit-one.jpg"
+                            alt="Inkspire art kit"
+                        >
+                        <h3>Creative Art Kit</h3>
+                    </div>
+
+                    <button
+                        class="category-arrow category-previous"
+                        type="button"
+                        aria-label="Previous art kit"
+                    >
+                        &#10094;
+                    </button>
+
+                    <button
+                        class="category-arrow category-next"
+                        type="button"
+                        aria-label="Next art kit"
+                    >
+                        &#10095;
+                    </button>
+                </div>
+
+                <div class="category-dots"></div>
+            </div>
+        </div>
+
+        <div id="others" class="gallery-category">
+            <h3 class="category-title">Other Projects</h3>
+
+            <div class="category-slideshow">
+                <div class="category-showcase">
+                    <div class="category-slide active">
+                        <img
+                            src="images/other-project-one.jpg"
+                            alt="Other Inkspire project"
+                        >
+                        <h3>Other Project</h3>
+                    </div>
+
+                    <button
+                        class="category-arrow category-previous"
+                        type="button"
+                        aria-label="Previous project"
+                    >
+                        &#10094;
+                    </button>
+
+                    <button
+                        class="category-arrow category-next"
+                        type="button"
+                        aria-label="Next project"
+                    >
+                        &#10095;
+                    </button>
+                </div>
+
+                <div class="category-dots"></div>
+            </div>
+        </div>
+     </div>
+    </section>
+
+    <section id="events">
+        <h2>Events</h2>
+
+        <p>
+            Photos from Inkspire events and library collaborations will appear here.
+        </p>
+    </section>
+</main>
 
     <footer>
         <p>© 2026 DBHS Inkspire Club</p>
@@ -100,5 +231,9 @@
             Creator of website: Yinhang (Yulisa) Wu
         </p>
     </footer>
+    
+   <script src="./script.js?v=4"></script>
+<script src="./gallery.js?v=1"></script>
+
 </body>
 </html>
