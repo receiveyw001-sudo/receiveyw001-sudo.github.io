@@ -207,52 +207,7 @@
     <p class="footer-credit">Creator of website: Yinhang(Yulisa) Wu</p>
     </footer>
 
-    <script>
-    const slides = document.querySelectorAll(".showcase-slide");
-    const dots = document.querySelectorAll(".showcase-dot");
-    const previousButton = document.querySelector(".showcase-previous");
-    const nextButton = document.querySelector(".showcase-next");
 
-    let currentSlide = 0;
-
-    function showSlide(index) {
-        slides.forEach(function (slide) {
-            slide.classList.remove("active");
-        });
-
-        dots.forEach(function (dot) {
-            dot.classList.remove("active");
-        });
-
-        currentSlide = (index + slides.length) % slides.length;
-
-        slides[currentSlide].classList.add("active");
-
-        if (dots[currentSlide]) {
-            dots[currentSlide].classList.add("active");
-        }
-    }
-
-    if (previousButton && nextButton && slides.length > 0) {
-        previousButton.addEventListener("click", function () {
-            showSlide(currentSlide - 1);
-        });
-
-        nextButton.addEventListener("click", function () {
-            showSlide(currentSlide + 1);
-        });
-
-        dots.forEach(function (dot, index) {
-            dot.addEventListener("click", function () {
-                showSlide(index);
-            });
-        });
-
-        setInterval(function () {
-            showSlide(currentSlide + 1);
-        }, 4000);
-    }
-</script>
 <script>
     window.addEventListener("DOMContentLoaded", function () {
         document.body.classList.add("page-loaded");
