@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     /* =========================
-       Artwork slideshow
+       Homepage artwork slideshow
     ========================== */
 
     const slides = document.querySelectorAll(".showcase-slide");
@@ -79,15 +79,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const navigation = document.querySelector(".nav-links");
     const dropdowns = document.querySelectorAll(".dropdown");
 
+    function closeMobileNavigation() {
+        if (navigation) {
+            navigation.classList.remove("mobile-open");
+        }
+
+        if (menuToggle) {
+            menuToggle.textContent = "☰";
+            menuToggle.setAttribute("aria-expanded", "false");
+        }
+
+        dropdowns.forEach(function (dropdown) {
+            dropdown.classList.remove("mobile-open");
+        });
+    }
+
     if (menuToggle && navigation) {
         menuToggle.addEventListener("click", function () {
             const isOpen = navigation.classList.toggle("mobile-open");
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
             menuToggle.textContent = isOpen ? "✕" : "☰";
         });
     }
@@ -136,8 +147,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             /*
-             * On mobile, do not navigate when the user is
-             * tapping a dropdown title to open its submenu.
+             * On mobile, tapping a dropdown title opens its submenu
+             * instead of immediately leaving the page.
              */
             if (
                 window.innerWidth <= 700 &&
@@ -146,7 +157,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            /* Section on the current page */
             if (destination.startsWith("#")) {
                 const target = document.querySelector(destination);
 
@@ -169,19 +179,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     target.classList.remove("section-fade");
                 }, 700);
 
-                if (navigation) {
-                    navigation.classList.remove("mobile-open");
-                }
-
-                if (menuToggle) {
-                    menuToggle.textContent = "☰";
-                    menuToggle.setAttribute("aria-expanded", "false");
-                }
-
+                closeMobileNavigation();
                 return;
             }
 
-            /* Another HTML page */
             if (destination.includes(".html")) {
                 event.preventDefault();
 
@@ -195,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* =========================
-       Contact panel
+       Contact form panel
     ========================== */
 
     const contactButton = document.querySelector(".contact-toggle");
@@ -240,11 +241,30 @@ document.addEventListener("DOMContentLoaded", function () {
             const statusMessage =
                 contactForm.querySelector(".form-status");
 
+            if (!submitButton || !statusMessage) {
+                return;
+            }
+
             submitButton.disabled = true;
             submitButton.textContent = "Sending...";
             statusMessage.textContent = "";
 
             const formData = new FormData(contactForm);
+            const visitorEmail = formData.get("email");
+
+            /*
+             * FormSubmit settings
+             */
+            formData.append(
+                "_subject",
+                "New Inkspire website message"
+            );
+
+            if (visitorEmail) {
+                formData.append("_replyto", visitorEmail);
+            }
+
+            formData.append("_template", "table");
 
             try {
                 const response = await fetch(
@@ -252,19 +272,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     {
                         method: "POST",
                         headers: {
-                            "Content-Type": "application/json",
-                            "Accept": "application/json"
+                            Accept: "application/json"
                         },
-                        body: JSON.stringify({
-                            name: formData.get("name"),
-                            email: formData.get("email"),
-                            message: formData.get("message"),
-                            _subject: "New Inkspire website message"
-                        })
+                        body: formData
                     }
                 );
 
-                const result = await response.json();
+                let result;
+
+                try {
+                    result = await response.json();
+                } catch {
+                    throw new Error(
+                        "FormSubmit returned an unreadable response."
+                    );
+                }
 
                 console.log("FormSubmit response:", result);
 
@@ -277,7 +299,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!submissionSucceeded) {
                     throw new Error(
-                        result.message || "Submission failed"
+                        result.message ||
+                        "FormSubmit did not confirm the submission."
                     );
                 }
 
