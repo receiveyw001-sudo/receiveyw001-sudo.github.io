@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    /* Artwork slideshow */
+    /* =========================
+       Artwork slideshow
+    ========================== */
 
     const slides = document.querySelectorAll(".showcase-slide");
     const dots = document.querySelectorAll(".showcase-dot");
@@ -34,6 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function restartSlideshow() {
         clearInterval(slideshowTimer);
 
+        if (slides.length < 2) {
+            return;
+        }
+
         slideshowTimer = setInterval(function () {
             showSlide(currentSlide + 1);
         }, 4000);
@@ -65,7 +71,54 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /* Navigation transitions */
+    /* =========================
+       Mobile navigation
+    ========================== */
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".nav-links");
+    const dropdowns = document.querySelectorAll(".dropdown");
+
+    if (menuToggle && navigation) {
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navigation.classList.toggle("mobile-open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+    }
+
+    dropdowns.forEach(function (dropdown) {
+        const dropdownTrigger = dropdown.querySelector(".drop-button");
+
+        if (!dropdownTrigger) {
+            return;
+        }
+
+        dropdownTrigger.addEventListener("click", function (event) {
+            if (window.innerWidth > 700) {
+                return;
+            }
+
+            event.preventDefault();
+
+            dropdowns.forEach(function (otherDropdown) {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.classList.remove("mobile-open");
+                }
+            });
+
+            dropdown.classList.toggle("mobile-open");
+        });
+    });
+
+    /* =========================
+       Navigation transitions
+    ========================== */
 
     const navigationLinks = document.querySelectorAll(".navbar a[href]");
 
@@ -75,8 +128,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (
                 !destination ||
+                destination === "#" ||
                 destination.startsWith("mailto:") ||
                 destination.startsWith("http")
+            ) {
+                return;
+            }
+
+            /*
+             * On mobile, do not navigate when the user is
+             * tapping a dropdown title to open its submenu.
+             */
+            if (
+                window.innerWidth <= 700 &&
+                link.classList.contains("drop-button")
             ) {
                 return;
             }
@@ -97,14 +162,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 target.classList.remove("section-fade");
-
                 void target.offsetWidth;
-
                 target.classList.add("section-fade");
 
                 setTimeout(function () {
                     target.classList.remove("section-fade");
                 }, 700);
+
+                if (navigation) {
+                    navigation.classList.remove("mobile-open");
+                }
+
+                if (menuToggle) {
+                    menuToggle.textContent = "☰";
+                    menuToggle.setAttribute("aria-expanded", "false");
+                }
 
                 return;
             }
@@ -121,49 +193,116 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-});
 
-window.addEventListener("pageshow", function () {
-    document.body.classList.remove("page-leaving");
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navigation = document.querySelector(".nav-links");
-    const dropdowns = document.querySelectorAll(".dropdown");
+    /* =========================
+       Contact panel
+    ========================== */
 
-    if (menuToggle && navigation) {
-        menuToggle.addEventListener("click", function () {
-            const isOpen = navigation.classList.toggle("mobile-open");
+    const contactButton = document.querySelector(".contact-toggle");
+    const contactPanel = document.querySelector("#contact-panel");
+    const contactForm = document.querySelector("#contact-form");
 
-            menuToggle.setAttribute(
+    if (contactButton && contactPanel) {
+        contactButton.addEventListener("click", function () {
+            const isOpen = contactPanel.classList.toggle("open");
+
+            contactButton.textContent = isOpen
+                ? "Close Contact Form"
+                : "Contact Us";
+
+            contactButton.setAttribute(
                 "aria-expanded",
                 String(isOpen)
             );
 
-            menuToggle.textContent = isOpen ? "✕" : "☰";
+            if (isOpen) {
+                setTimeout(function () {
+                    contactPanel.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+                }, 250);
+            }
         });
     }
 
-    dropdowns.forEach(function (dropdown) {
-        const dropdownTrigger =
-            dropdown.querySelector(".drop-button");
+    /* =========================
+       Contact form submission
+    ========================== */
 
-        if (!dropdownTrigger) {
-            return;
-        }
-
-        dropdownTrigger.addEventListener("click", function (event) {
-            if (window.innerWidth > 700) {
-                return;
-            }
-
-            /*
-             * First tap opens the submenu.
-             * A normal link inside the submenu opens the destination.
-             */
+    if (contactForm) {
+        contactForm.addEventListener("submit", async function (event) {
             event.preventDefault();
 
-            dropdown.classList.toggle("mobile-open");
+            const submitButton =
+                contactForm.querySelector('button[type="submit"]');
+
+            const statusMessage =
+                contactForm.querySelector(".form-status");
+
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+            statusMessage.textContent = "";
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(
+                    "https://formsubmit.co/ajax/Inkspire.dbhs@gmail.com",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        },
+                        body: JSON.stringify({
+                            name: formData.get("name"),
+                            email: formData.get("email"),
+                            message: formData.get("message"),
+                            _subject: "New Inkspire website message"
+                        })
+                    }
+                );
+
+                const result = await response.json();
+
+                console.log("FormSubmit response:", result);
+
+                const submissionSucceeded =
+                    response.ok &&
+                    (
+                        result.success === true ||
+                        result.success === "true"
+                    );
+
+                if (!submissionSucceeded) {
+                    throw new Error(
+                        result.message || "Submission failed"
+                    );
+                }
+
+                contactForm.innerHTML = `
+                    <div class="form-success">
+                        <h3>Message sent!</h3>
+                        <p>
+                            Thank you for contacting Inkspire.
+                            We will respond as soon as possible.
+                        </p>
+                    </div>
+                `;
+            } catch (error) {
+                console.error("Contact form error:", error);
+
+                statusMessage.textContent =
+                    "The message could not be sent. Please try again.";
+
+                submitButton.disabled = false;
+                submitButton.textContent = "Send Message";
+            }
         });
-    });
+    }
+});
+
+window.addEventListener("pageshow", function () {
+    document.body.classList.remove("page-leaving");
 });
