@@ -889,8 +889,8 @@ button:disabled {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 45px;
-    margin: 35px auto 30px;
+    gap: 55px;
+    margin: 40px auto 35px;
 }
 
 .join-qr-item {
@@ -899,11 +899,11 @@ button:disabled {
 
 .join-qr-item img {
     display: block;
-    width: 180px;
-    height: 180px;
+    width: 280px;
+    height: 280px;
     object-fit: contain;
-    margin: 0 auto 10px;
-    padding: 10px;
+    margin: 0 auto 12px;
+    padding: 12px;
     background: white;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -911,17 +911,22 @@ button:disabled {
 
 .join-qr-item p {
     margin: 0;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
 }
 
 @media (max-width: 600px) {
     .join-qr-codes {
-        gap: 20px;
+        gap: 16px;
     }
 
     .join-qr-item img {
-        width: 135px;
-        height: 135px;
+        width: 150px;
+        height: 150px;
+        padding: 8px;
+    }
+
+    .join-qr-item p {
+        font-size: 15px;
     }
 }
