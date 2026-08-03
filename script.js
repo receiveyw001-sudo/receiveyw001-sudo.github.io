@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextButton = document.querySelector(".showcase-next");
 
     let currentSlide = 0;
-    let slideshowTimer;
+    let slideshowTimer = null;
 
     function showSlide(index) {
         if (slides.length === 0) {
@@ -34,7 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function restartSlideshow() {
-        clearInterval(slideshowTimer);
+        if (slideshowTimer) {
+            clearInterval(slideshowTimer);
+        }
 
         if (slides.length < 2) {
             return;
@@ -96,15 +98,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (menuToggle && navigation) {
         menuToggle.addEventListener("click", function () {
-            const isOpen = navigation.classList.toggle("mobile-open");
+            const isOpen =
+                navigation.classList.toggle("mobile-open");
 
-            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
             menuToggle.textContent = isOpen ? "✕" : "☰";
         });
     }
 
     dropdowns.forEach(function (dropdown) {
-        const dropdownTrigger = dropdown.querySelector(".drop-button");
+        const dropdownTrigger =
+            dropdown.querySelector(".drop-button");
 
         if (!dropdownTrigger) {
             return;
@@ -131,7 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
        Navigation transitions
     ========================== */
 
-    const navigationLinks = document.querySelectorAll(".navbar a[href]");
+    const navigationLinks =
+        document.querySelectorAll(".navbar a[href]");
 
     navigationLinks.forEach(function (link) {
         link.addEventListener("click", function (event) {
@@ -146,10 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            /*
-             * On mobile, tapping a dropdown title opens its submenu
-             * instead of immediately leaving the page.
-             */
             if (
                 window.innerWidth <= 700 &&
                 link.classList.contains("drop-button")
@@ -158,7 +163,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (destination.startsWith("#")) {
-                const target = document.querySelector(destination);
+                const target =
+                    document.querySelector(destination);
 
                 if (!target) {
                     return;
@@ -199,13 +205,19 @@ document.addEventListener("DOMContentLoaded", function () {
        Contact form panel
     ========================== */
 
-    const contactButton = document.querySelector(".contact-toggle");
-    const contactPanel = document.querySelector("#contact-panel");
-    const contactForm = document.querySelector("#contact-form");
+    const contactButton =
+        document.querySelector(".contact-toggle");
+
+    const contactPanel =
+        document.querySelector("#contact-panel");
+
+    const contactForm =
+        document.querySelector("#contact-form");
 
     if (contactButton && contactPanel) {
         contactButton.addEventListener("click", function () {
-            const isOpen = contactPanel.classList.toggle("open");
+            const isOpen =
+                contactPanel.classList.toggle("open");
 
             contactButton.textContent = isOpen
                 ? "Close Contact Form"
@@ -228,101 +240,97 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* =========================
-       Contact form submission
+       Contact form: Web3Forms
     ========================== */
 
     if (contactForm) {
-        contactForm.addEventListener("submit", async function (event) {
-            event.preventDefault();
+        contactForm.addEventListener(
+            "submit",
+            async function (event) {
+                event.preventDefault();
 
-            const submitButton =
-                contactForm.querySelector('button[type="submit"]');
+                const submitButton =
+                    contactForm.querySelector(
+                        'button[type="submit"]'
+                    );
 
-            const statusMessage =
-                contactForm.querySelector(".form-status");
+                const statusMessage =
+                    contactForm.querySelector(".form-status");
 
-            if (!submitButton || !statusMessage) {
-                return;
-            }
+                if (!submitButton || !statusMessage) {
+                    return;
+                }
 
-            submitButton.disabled = true;
-            submitButton.textContent = "Sending...";
-            statusMessage.textContent = "";
+                submitButton.disabled = true;
+                submitButton.textContent = "Sending...";
+                statusMessage.textContent = "";
 
-            const formData = new FormData(contactForm);
-            const visitorEmail = formData.get("email");
+                const formData = new FormData(contactForm);
 
-            /*
-             * FormSubmit settings
-             */
-            formData.append(
-                "_subject",
-                "New Inkspire website message"
-            );
-
-            if (visitorEmail) {
-                formData.append("_replyto", visitorEmail);
-            }
-
-            formData.append("_template", "table");
-
-            try {
-                const response = await fetch(
-                    "https://formsubmit.co/ajax/Inkspire.dbhs@gmail.com",
-                    {
-                        method: "POST",
-                        headers: {
-                            Accept: "application/json"
-                        },
-                        body: formData
-                    }
+                formData.set(
+                    "access_key",
+                    "cdc3047f-8612-4e72-b8e7-a1ba9ee2f549"
                 );
 
-                let result;
+                formData.set(
+                    "subject",
+                    "New Inkspire website message"
+                );
+
+                formData.set(
+                    "from_name",
+                    "DBHS Inkspire Website"
+                );
 
                 try {
-                    result = await response.json();
-                } catch {
-                    throw new Error(
-                        "FormSubmit returned an unreadable response."
+                    const response = await fetch(
+                        "https://api.web3forms.com/submit",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
                     );
+
+                    const result = await response.json();
+
+                    console.log(
+                        "Web3Forms response:",
+                        result
+                    );
+
+                    if (
+                        !response.ok ||
+                        result.success !== true
+                    ) {
+                        throw new Error(
+                            result.message ||
+                            "The submission was not accepted."
+                        );
+                    }
+
+                    contactForm.innerHTML = `
+                        <div class="form-success">
+                            <h3>Message sent!</h3>
+                            <p>
+                                Thank you for contacting Inkspire.
+                                We will respond as soon as possible.
+                            </p>
+                        </div>
+                    `;
+                } catch (error) {
+                    console.error(
+                        "Contact form error:",
+                        error
+                    );
+
+                    statusMessage.textContent =
+                        "The message could not be sent. Please try again.";
+
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Send Message";
                 }
-
-                console.log("FormSubmit response:", result);
-
-                const submissionSucceeded =
-                    response.ok &&
-                    (
-                        result.success === true ||
-                        result.success === "true"
-                    );
-
-                if (!submissionSucceeded) {
-                    throw new Error(
-                        result.message ||
-                        "FormSubmit did not confirm the submission."
-                    );
-                }
-
-                contactForm.innerHTML = `
-                    <div class="form-success">
-                        <h3>Message sent!</h3>
-                        <p>
-                            Thank you for contacting Inkspire.
-                            We will respond as soon as possible.
-                        </p>
-                    </div>
-                `;
-            } catch (error) {
-                console.error("Contact form error:", error);
-
-                statusMessage.textContent =
-                    "The message could not be sent. Please try again.";
-
-                submitButton.disabled = false;
-                submitButton.textContent = "Send Message";
             }
-        });
+        );
     }
 });
 
