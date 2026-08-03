@@ -136,6 +136,64 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* =========================
+       Contact form panel
+    ========================== */
+
+    const contactButton =
+        document.querySelector(".contact-toggle");
+
+    const contactPanel =
+        document.querySelector("#contact-panel");
+
+    const contactForm =
+        document.querySelector("#contact-form");
+
+    function openContactForm() {
+        if (!contactPanel) {
+            return;
+        }
+
+        contactPanel.classList.add("open");
+
+        if (contactButton) {
+            contactButton.textContent = "Close Contact Form";
+            contactButton.setAttribute("aria-expanded", "true");
+        }
+
+        setTimeout(function () {
+            contactPanel.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }, 150);
+    }
+
+    if (contactButton && contactPanel) {
+        contactButton.addEventListener("click", function () {
+            const isOpen =
+                contactPanel.classList.toggle("open");
+
+            contactButton.textContent = isOpen
+                ? "Close Contact Form"
+                : "Contact Us";
+
+            contactButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            if (isOpen) {
+                setTimeout(function () {
+                    contactPanel.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+                }, 250);
+            }
+        });
+    }
+
+    /* =========================
        Navigation transitions
     ========================== */
 
@@ -162,6 +220,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+            /* About Us → Contact */
+            if (destination === "#contact") {
+                event.preventDefault();
+
+                openContactForm();
+                closeMobileNavigation();
+
+                return;
+            }
+
+            /* Other sections on this page */
             if (destination.startsWith("#")) {
                 const target =
                     document.querySelector(destination);
@@ -189,6 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+            /* Links to another page */
             if (destination.includes(".html")) {
                 event.preventDefault();
 
@@ -200,44 +270,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-
-    /* =========================
-       Contact form panel
-    ========================== */
-
-    const contactButton =
-        document.querySelector(".contact-toggle");
-
-    const contactPanel =
-        document.querySelector("#contact-panel");
-
-    const contactForm =
-        document.querySelector("#contact-form");
-
-    if (contactButton && contactPanel) {
-        contactButton.addEventListener("click", function () {
-            const isOpen =
-                contactPanel.classList.toggle("open");
-
-            contactButton.textContent = isOpen
-                ? "Close Contact Form"
-                : "Contact Us";
-
-            contactButton.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-            if (isOpen) {
-                setTimeout(function () {
-                    contactPanel.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-                }, 250);
-            }
-        });
-    }
 
     /* =========================
        Contact form: Web3Forms
