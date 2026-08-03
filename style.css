@@ -1240,3 +1240,254 @@ button:disabled {
         font-size: 23px;
     }
 }
+.events-showcase {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    margin: 35px auto 0;
+    overflow: hidden;
+
+    background: #292420;
+    border-radius: 20px;
+}
+
+.events-slide {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+.events-slide.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.events-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.events-slide h3 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: 0;
+    padding: 55px 28px 22px;
+
+    color: white;
+    font-size: 25px;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.88)
+    );
+
+    pointer-events: none;
+}
+
+.events-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 20;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+
+    font-size: 22px;
+    cursor: pointer;
+
+    transform: translateY(-50%);
+}
+
+.events-previous {
+    left: 18px;
+}
+
+.events-next {
+    right: 18px;
+}
+
+.events-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.events-dot {
+    width: 11px;
+    height: 11px;
+
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+
+    background: #c8bdb7;
+    cursor: pointer;
+}
+
+.events-dot.active {
+    background: #292420;
+}
+
+@media (max-width: 700px) {
+    .events-showcase {
+        aspect-ratio: 4 / 3;
+    }
+
+    .events-slide h3 {
+        font-size: 20px;
+        padding: 40px 20px 17px;
+    }
+
+    .events-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
+/* Events slideshow */
+
+.events-showcase {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    margin: 35px auto 0;
+    overflow: hidden;
+    background: #292420;
+    border-radius: 20px;
+}
+
+.events-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+.events-slide.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.events-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.events-slide h3 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: 0;
+    padding: 55px 28px 22px;
+
+    color: white;
+    font-size: 25px;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.88)
+    );
+
+    pointer-events: none;
+}
+
+.events-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 20;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+
+    font-size: 22px;
+    cursor: pointer;
+
+    transform: translateY(-50%);
+}
+
+.events-previous {
+    left: 18px;
+}
+
+.events-next {
+    right: 18px;
+}
+
+.events-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.events-dot {
+    width: 11px;
+    height: 11px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #c8bdb7;
+    cursor: pointer;
+}
+
+.events-dot.active {
+    background: #292420;
+}
+
+@media (max-width: 700px) {
+    .events-showcase {
+        aspect-ratio: 4 / 3;
+    }
+
+    .events-slide h3 {
+        font-size: 20px;
+        padding: 40px 20px 17px;
+    }
+
+    .events-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}

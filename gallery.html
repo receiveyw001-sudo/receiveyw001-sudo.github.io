@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Inkspire Gallery</title>
-   <link rel="stylesheet" href="./style.css?v=6">
+  <link rel="stylesheet" href="./style.css?v=8">
 </head>
 
 <body>
@@ -222,13 +222,61 @@
      </div>
     </section>
 
-    <section id="events">
-        <h2>Events</h2>
+   <section id="events">
+    <h2>Events</h2>
 
-        <p>
-            Photos from Inkspire events and library collaborations will appear here.
-        </p>
-    </section>
+    <p>
+        Photos from Inkspire events and library collaborations.
+    </p>
+
+    <div class="events-showcase">
+        <div class="events-slide active">
+            <img
+                src="images/event-one.jpg"
+                alt="Inkspire event"
+            >
+            <h3>Event Name</h3>
+        </div>
+
+        <div class="events-slide">
+            <img
+                src="images/event-two.jpg"
+                alt="Inkspire library collaboration"
+            >
+            <h3>Library Collaboration</h3>
+        </div>
+
+        <div class="events-slide">
+            <img
+                src="images/event-three.jpg"
+                alt="Inkspire community event"
+            >
+            <h3>Library Collaboration</h3>
+        </div>
+
+        <button
+            class="events-arrow events-previous"
+            type="button"
+            aria-label="Previous event"
+        >
+            &#10094;
+        </button>
+
+        <button
+            class="events-arrow events-next"
+            type="button"
+            aria-label="Next event"
+        >
+            &#10095;
+        </button>
+    </div>
+
+    <div class="events-dots">
+        <button class="events-dot active" type="button"></button>
+        <button class="events-dot" type="button"></button>
+        <button class="events-dot" type="button"></button>
+    </div>
+</section>
 </main>
 
     <footer>
@@ -241,8 +289,8 @@
         </p>
     </footer>
     
-   <script src="./script.js?v=4"></script>
-<script src="./gallery.js?v=1"></script>
+<script src="./script.js?v=15"></script>
+<script src="./gallery.js?v=3"></script>
 
 </body>
 </html>
