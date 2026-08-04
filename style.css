@@ -1491,3 +1491,17 @@ button:disabled {
         font-size: 18px;
     }
 }
+.join-mascot {
+    display: block;
+    width: 380px;
+    max-width: 90%;
+    height: auto;
+
+    margin: -70px auto 10px;
+}
+@media (max-width: 700px) {
+    .join-mascot {
+        width: 220px;
+        margin-bottom: 20px;
+    }
+}
