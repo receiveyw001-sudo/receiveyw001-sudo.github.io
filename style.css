@@ -1501,7 +1501,8 @@ button:disabled {
 }
 @media (max-width: 700px) {
     .join-mascot {
-        width: 220px;
-        margin-bottom: 20px;
+        width: 180px;
+        max-width: 55vw;
+        margin: -20px auto 18px;
     }
 }
