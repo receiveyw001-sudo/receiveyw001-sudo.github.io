@@ -1,33 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const slideshowSections =
-        document.querySelectorAll(".category-slideshow");
+    initializeCategorySlideshows();
+    initializeEventsSlideshow();
+});
 
-    slideshowSections.forEach(function (slideshow) {
-        const slides =
-            slideshow.querySelectorAll(".category-slide");
+function initializeCategorySlideshows() {
+    const slideshows = document.querySelectorAll(
+        ".category-slideshow"
+    );
 
-        const previousButton =
-            slideshow.querySelector(".category-previous");
+    slideshows.forEach(function (slideshow) {
+        const slides = Array.from(
+            slideshow.querySelectorAll(
+                ".category-showcase > .category-slide"
+            )
+        );
 
-        const nextButton =
-            slideshow.querySelector(".category-next");
+        const previousButton = slideshow.querySelector(
+            ".category-previous"
+        );
 
-        const dotsContainer =
-            slideshow.querySelector(".category-dots");
+        const nextButton = slideshow.querySelector(
+            ".category-next"
+        );
 
-        if (slides.length === 0) {
+        const dotsContainer = slideshow.querySelector(
+            ".category-dots"
+        );
+
+        if (
+            slides.length === 0 ||
+            !dotsContainer ||
+            !previousButton ||
+            !nextButton
+        ) {
             return;
         }
 
         let currentSlide = 0;
-        let timer;
-        const dots = [];
+        let timer = null;
 
-        /*
-         * Automatically creates the correct number of dots.
-         * You do not need to add dots manually later.
-         */
-        slides.forEach(function (_, index) {
+        dotsContainer.replaceChildren();
+
+        const dots = slides.map(function (_, index) {
             const dot = document.createElement("button");
 
             dot.className = "category-dot";
@@ -39,30 +53,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
             dot.addEventListener("click", function () {
                 showSlide(index);
-                restartSlideshow();
+                restartTimer();
             });
 
             dotsContainer.appendChild(dot);
-            dots.push(dot);
+
+            return dot;
         });
 
         function showSlide(index) {
-            slides.forEach(function (slide) {
-                slide.classList.remove("active");
-            });
-
-            dots.forEach(function (dot) {
-                dot.classList.remove("active");
-            });
-
             currentSlide =
                 (index + slides.length) % slides.length;
 
-            slides[currentSlide].classList.add("active");
-            dots[currentSlide].classList.add("active");
+            slides.forEach(function (slide, slideIndex) {
+                slide.classList.toggle(
+                    "active",
+                    slideIndex === currentSlide
+                );
+            });
+
+            dots.forEach(function (dot, dotIndex) {
+                dot.classList.toggle(
+                    "active",
+                    dotIndex === currentSlide
+                );
+            });
         }
 
-        function restartSlideshow() {
+        function restartTimer() {
             clearInterval(timer);
 
             if (slides.length < 2) {
@@ -74,101 +92,121 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 5000);
         }
 
-        if (slides.length < 2) {
-            previousButton.hidden = true;
-            nextButton.hidden = true;
-        } else {
-            previousButton.addEventListener("click", function () {
-                showSlide(currentSlide - 1);
-                restartSlideshow();
-            });
+        const hasMultipleSlides = slides.length > 1;
 
-            nextButton.addEventListener("click", function () {
-                showSlide(currentSlide + 1);
-                restartSlideshow();
-            });
+        previousButton.hidden = !hasMultipleSlides;
+        nextButton.hidden = !hasMultipleSlides;
+
+        if (hasMultipleSlides) {
+            previousButton.addEventListener(
+                "click",
+                function () {
+                    showSlide(currentSlide - 1);
+                    restartTimer();
+                }
+            );
+
+            nextButton.addEventListener(
+                "click",
+                function () {
+                    showSlide(currentSlide + 1);
+                    restartTimer();
+                }
+            );
         }
 
         showSlide(0);
-        restartSlideshow();
+        restartTimer();
+
+        console.log(
+            "Gallery slideshow:",
+            slideshow.closest(".gallery-category")?.id,
+            "slides:",
+            slides.length,
+            "dots:",
+            dots.length
+        );
     });
-    const eventSlides =
-    document.querySelectorAll(".events-slide");
+}
 
-const eventDots =
-    document.querySelectorAll(".events-dot");
+function initializeEventsSlideshow() {
+    const slides = Array.from(
+        document.querySelectorAll(".events-slide")
+    );
 
-const eventPrevious =
-    document.querySelector(".events-previous");
+    const dots = Array.from(
+        document.querySelectorAll(".events-dot")
+    );
 
-const eventNext =
-    document.querySelector(".events-next");
+    const previousButton = document.querySelector(
+        ".events-previous"
+    );
 
-let currentEventSlide = 0;
-let eventTimer = null;
+    const nextButton = document.querySelector(
+        ".events-next"
+    );
 
-function showEventSlide(index) {
-    if (eventSlides.length === 0) {
+    if (slides.length === 0) {
         return;
     }
 
-    eventSlides.forEach(function (slide) {
-        slide.classList.remove("active");
-    });
+    let currentSlide = 0;
+    let timer = null;
 
-    eventDots.forEach(function (dot) {
-        dot.classList.remove("active");
-    });
+    function showSlide(index) {
+        currentSlide =
+            (index + slides.length) % slides.length;
 
-    currentEventSlide =
-        (index + eventSlides.length) %
-        eventSlides.length;
+        slides.forEach(function (slide, slideIndex) {
+            slide.classList.toggle(
+                "active",
+                slideIndex === currentSlide
+            );
+        });
 
-    eventSlides[currentEventSlide]
-        .classList.add("active");
-
-    if (eventDots[currentEventSlide]) {
-        eventDots[currentEventSlide]
-            .classList.add("active");
-    }
-}
-
-function restartEventSlideshow() {
-    clearInterval(eventTimer);
-
-    if (eventSlides.length < 2) {
-        return;
-    }
-
-    eventTimer = setInterval(function () {
-        showEventSlide(currentEventSlide + 1);
-    }, 4000);
-}
-
-if (eventSlides.length > 0) {
-    showEventSlide(0);
-    restartEventSlideshow();
-
-    if (eventPrevious) {
-        eventPrevious.addEventListener("click", function () {
-            showEventSlide(currentEventSlide - 1);
-            restartEventSlideshow();
+        dots.forEach(function (dot, dotIndex) {
+            dot.classList.toggle(
+                "active",
+                dotIndex === currentSlide
+            );
         });
     }
 
-    if (eventNext) {
-        eventNext.addEventListener("click", function () {
-            showEventSlide(currentEventSlide + 1);
-            restartEventSlideshow();
-        });
+    function restartTimer() {
+        clearInterval(timer);
+
+        if (slides.length < 2) {
+            return;
+        }
+
+        timer = setInterval(function () {
+            showSlide(currentSlide + 1);
+        }, 4000);
     }
 
-    eventDots.forEach(function (dot, index) {
+    previousButton?.addEventListener(
+        "click",
+        function () {
+            showSlide(currentSlide - 1);
+            restartTimer();
+        }
+    );
+
+    nextButton?.addEventListener(
+        "click",
+        function () {
+            showSlide(currentSlide + 1);
+            restartTimer();
+        }
+    );
+
+    dots.forEach(function (dot, index) {
         dot.addEventListener("click", function () {
-            showEventSlide(index);
-            restartEventSlideshow();
+            showSlide(index);
+            restartTimer();
         });
     });
-}
 
-});
+    showSlide(0);
+    restartTimer();
+}

@@ -2,304 +2,469 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Inkspire Gallery</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap"
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="./style.css?v=21">
+    <link rel="stylesheet" href="./style.css?v=22">
 </head>
 
 <body>
+
+    <!-- Header -->
     <header class="gallery-header">
-   <nav class="navbar">
-    <a class="logo" href="index.html">INKSPIRE</a>
-<button
-    class="menu-toggle"
-    type="button"
-    aria-label="Open navigation menu"
-    aria-expanded="false"
->
-    ☰
-</button>
-    <div class="nav-links">
-        <a href="index.html">HOME</a>
 
-        <a href="index.html#projects">PROJECT OVERVIEW</a>
-
-        <div class="dropdown">
-            <a class="drop-button" href="gallery.html">
-                GALLERY PROJECTS <span>⌄</span>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a class="logo" href="index.html">
+                INKSPIRE
             </a>
 
-            <div class="dropdown-menu">
-        <a href="gallery.html#artwork">Artwork</a>
-        <a href="gallery.html#events">Events</a>
-    </div>
-        </div>
-<div class="dropdown">
-    <a class="drop-button" href="officers.html">
-        OFFICER SHOWCASES <span>⌄</span>
-    </a>
-
-    <div class="dropdown-menu">
-        <a href="officers.html#officers">Officers</a>
-        <a href="officers.html#officer-work">Works</a>
-    </div>
-</div>
-
-        <a href="index.html#join">JOIN US</a>
-
-        <div class="dropdown">
-            <button class="drop-button" type="button">
-                ABOUT US <span>⌄</span>
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+                ☰
             </button>
 
-            <div class="dropdown-menu">
-                <a href="index.html#about">Our Club</a>
-               <a href="index.html#join">Contact</a>
-            </div>
-        </div>
-    </div>
-</nav>
+            <div class="nav-links">
 
+                <a href="index.html">
+                    HOME
+                </a>
+
+                <a href="index.html#projects">
+                    PROJECT OVERVIEW
+                </a>
+
+                <!-- Gallery dropdown -->
+                <div class="dropdown">
+                    <a
+                        class="drop-button"
+                        href="gallery.html"
+                    >
+                        GALLERY PROJECTS <span>⌄</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="gallery.html#artwork">
+                            Artwork
+                        </a>
+
+                        <a href="gallery.html#events">
+                            Events
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Officers dropdown -->
+                <div class="dropdown">
+                    <a
+                        class="drop-button"
+                        href="officers.html"
+                    >
+                        OFFICER SHOWCASES <span>⌄</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="officers.html#officers">
+                            Officers
+                        </a>
+
+                        <a href="officers.html#officer-work">
+                            Works
+                        </a>
+                    </div>
+                </div>
+
+                <a href="index.html#join">
+                    JOIN US
+                </a>
+
+                <!-- About dropdown -->
+                <div class="dropdown">
+                    <button
+                        class="drop-button"
+                        type="button"
+                    >
+                        ABOUT US <span>⌄</span>
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a href="index.html#about">
+                            Our Club
+                        </a>
+
+                        <a href="index.html#join">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Hero -->
         <section class="hero">
-            <p class="label">INKSPIRE GALLERY</p>
-            <h2>Projects created by our members</h2>
+            <p class="label">
+                INKSPIRE GALLERY
+            </p>
+
+            <h2>
+                Projects created by our members
+            </h2>
 
             <p>
-                View artwork, crafts, and community projects completed by
-                Inkspire members.
+                View artwork, crafts, and community projects
+                completed by Inkspire members.
             </p>
         </section>
+
     </header>
 
-   <main>
-    <section id="artwork">
-        <h2>Artwork</h2>
-<div class="category-grid">
-        <div id="coloring-pages" class="gallery-category">
-            <h3 class="category-title">Coloring Pages</h3>
+    <main>
 
-            <div class="category-slideshow">
-                <div class="category-showcase">
-                    <div class="category-slide active">
-                        <img
-                            src="images/star-catcher.jpeg"
-                            alt="Star Catcher coloring page"
-                        >
-                        <h3>Star Catcher--Jennifer Wang</h3>
+        <!-- Artwork section -->
+        <section id="artwork">
+
+            <h2>Artwork</h2>
+
+            <div class="category-grid">
+
+                <!-- Coloring Pages -->
+                <div
+                    id="coloring-pages"
+                    class="gallery-category"
+                >
+                    <h3 class="category-title">
+                        Coloring Pages
+                    </h3>
+
+                    <div class="category-slideshow">
+
+                        <div class="category-showcase">
+
+                            <div class="category-slide active">
+                                <img
+                                    src="images/star-catcher.jpeg"
+                                    alt="Star Catcher coloring page"
+                                >
+
+                                <h3>
+                                    Star Catcher — Jennifer Wang
+                                </h3>
+                            </div>
+
+                            <div class="category-slide">
+                                <img
+                                    src="images/cozy-afternoon.png"
+                                    alt="Cozy Afternoon coloring page"
+                                >
+
+                                <h3>
+                                    Cozy Afternoon — Yulisa Wu
+                                </h3>
+                            </div>
+
+                            <button
+                                class="category-arrow category-previous"
+                                type="button"
+                                aria-label="Previous coloring page"
+                            >
+                                &#10094;
+                            </button>
+
+                            <button
+                                class="category-arrow category-next"
+                                type="button"
+                                aria-label="Next coloring page"
+                            >
+                                &#10095;
+                            </button>
+
+                        </div>
+
+                        <div class="category-dots"></div>
+
                     </div>
-
-                    <div class="category-slide">
-                        <img
-                            src="images/cozy-afternoon.png"
-                            alt="Cozy Afternoon coloring page"
-                        >
-                        <h3>Cozy Afternoon--Yulisa Wu</h3>
-                    </div>
-
-                    <button
-                        class="category-arrow category-previous"
-                        type="button"
-                        aria-label="Previous coloring page"
-                    >
-                        &#10094;
-                    </button>
-
-                    <button
-                        class="category-arrow category-next"
-                        type="button"
-                        aria-label="Next coloring page"
-                    >
-                        &#10095;
-                    </button>
                 </div>
 
-                <div class="category-dots"></div>
-            </div>
-        </div>
+                <!-- Bookmarks -->
+                <div
+                    id="bookmarks"
+                    class="gallery-category"
+                >
+                    <h3 class="category-title">
+                        Bookmarks
+                    </h3>
 
-        <div id="bookmarks" class="gallery-category">
-            <h3 class="category-title">Bookmarks</h3>
+                    <div class="category-slideshow">
 
-            <div class="category-slideshow">
-                <div class="category-showcase">
-                    <div class="category-slide active">
-                        <img
-                            src="images/Bookmark.jpg"
-                            alt="Inkspire bookmark"
-                        >
-                        <h3>Bookmark Design--Jennifer Wang</h3>
+                        <div class="category-showcase">
+
+                            <div class="category-slide active">
+                                <img
+                                    src="images/Bookmark.jpg"
+                                    alt="Bookmark designs by Jennifer Wang"
+                                >
+
+                                <h3>
+                                    Bookmark Designs — Jennifer Wang
+                                </h3>
+                            </div>
+
+                            <div class="category-slide">
+                                <img
+                                    src="images/Yul.jpg"
+                                    alt="Bookmark designs by Yulisa Wu"
+                                >
+
+                                <h3>
+                                    Bookmark Designs — Yulisa Wu
+                                </h3>
+                            </div>
+
+                            <button
+                                class="category-arrow category-previous"
+                                type="button"
+                                aria-label="Previous bookmark"
+                            >
+                                &#10094;
+                            </button>
+
+                            <button
+                                class="category-arrow category-next"
+                                type="button"
+                                aria-label="Next bookmark"
+                            >
+                                &#10095;
+                            </button>
+
+                        </div>
+
+                        <div class="category-dots"></div>
+
                     </div>
-
-                    <button
-                        class="category-arrow category-previous"
-                        type="button"
-                        aria-label="Previous bookmark"
-                    >
-                        &#10094;
-                    </button>
-
-                    <button
-                        class="category-arrow category-next"
-                        type="button"
-                        aria-label="Next bookmark"
-                    >
-                        &#10095;
-                    </button>
                 </div>
 
-                <div class="category-dots"></div>
-            </div>
-        </div>
+                <!-- Art Kits -->
+                <div
+                    id="art-kits"
+                    class="gallery-category"
+                >
+                    <h3 class="category-title">
+                        Art Kits
+                    </h3>
 
-        <div id="art-kits" class="gallery-category">
-            <h3 class="category-title">Art Kits</h3>
+                    <div class="category-slideshow">
 
-            <div class="category-slideshow">
-                <div class="category-showcase">
-                    <div class="category-slide active">
-                        <img
-                            src="images/art-kit-one.jpg"
-                            alt="Inkspire art kit"
-                        >
-                        <h3>Creative Art Kit</h3>
+                        <div class="category-showcase">
+
+                            <div class="category-slide active">
+                                <img
+                                    src="images/art-kit-one.jpg"
+                                    alt="Inkspire creative art kit"
+                                >
+
+                                <h3>
+                                    Creative Art Kit
+                                </h3>
+                            </div>
+
+                            <button
+                                class="category-arrow category-previous"
+                                type="button"
+                                aria-label="Previous art kit"
+                            >
+                                &#10094;
+                            </button>
+
+                            <button
+                                class="category-arrow category-next"
+                                type="button"
+                                aria-label="Next art kit"
+                            >
+                                &#10095;
+                            </button>
+
+                        </div>
+
+                        <div class="category-dots"></div>
+
                     </div>
-
-                    <button
-                        class="category-arrow category-previous"
-                        type="button"
-                        aria-label="Previous art kit"
-                    >
-                        &#10094;
-                    </button>
-
-                    <button
-                        class="category-arrow category-next"
-                        type="button"
-                        aria-label="Next art kit"
-                    >
-                        &#10095;
-                    </button>
                 </div>
 
-                <div class="category-dots"></div>
-            </div>
-        </div>
+                <!-- Other Projects -->
+                <div
+                    id="others"
+                    class="gallery-category"
+                >
+                    <h3 class="category-title">
+                        Other Projects
+                    </h3>
 
-        <div id="others" class="gallery-category">
-            <h3 class="category-title">Other Projects</h3>
+                    <div class="category-slideshow">
 
-            <div class="category-slideshow">
-                <div class="category-showcase">
-                    <div class="category-slide active">
-                        <img
-                            src="images/other-project-one.jpg"
-                            alt="Other Inkspire project"
-                        >
-                        <h3>Other Project</h3>
+                        <div class="category-showcase">
+
+                            <div class="category-slide active">
+                                <img
+                                    src="images/other-project-one.jpg"
+                                    alt="Other Inkspire project"
+                                >
+
+                                <h3>
+                                    Other Project
+                                </h3>
+                            </div>
+
+                            <button
+                                class="category-arrow category-previous"
+                                type="button"
+                                aria-label="Previous project"
+                            >
+                                &#10094;
+                            </button>
+
+                            <button
+                                class="category-arrow category-next"
+                                type="button"
+                                aria-label="Next project"
+                            >
+                                &#10095;
+                            </button>
+
+                        </div>
+
+                        <div class="category-dots"></div>
+
                     </div>
-
-                    <button
-                        class="category-arrow category-previous"
-                        type="button"
-                        aria-label="Previous project"
-                    >
-                        &#10094;
-                    </button>
-
-                    <button
-                        class="category-arrow category-next"
-                        type="button"
-                        aria-label="Next project"
-                    >
-                        &#10095;
-                    </button>
                 </div>
 
-                <div class="category-dots"></div>
             </div>
-        </div>
-     </div>
-    </section>
+        </section>
 
-   <section id="events">
-    <h2>Events</h2>
+        <!-- Events section -->
+        <section id="events">
 
-    <p>
-        Photos from Inkspire events and library collaborations.
-    </p>
+            <h2>Events</h2>
 
-    <div class="events-showcase">
-        <div class="events-slide active">
-            <img
-                src="images/event-one.jpg"
-                alt="Inkspire event"
-            >
-            <h3>Event Name</h3>
-        </div>
+            <p>
+                Photos from Inkspire events and library collaborations.
+            </p>
 
-        <div class="events-slide">
-            <img
-                src="images/event-two.jpg"
-                alt="Inkspire library collaboration"
-            >
-            <h3>Library Collaboration</h3>
-        </div>
+            <div class="events-showcase">
 
-        <div class="events-slide">
-            <img
-                src="images/event-three.jpg"
-                alt="Inkspire community event"
-            >
-            <h3>Library Collaboration</h3>
-        </div>
+                <div class="events-slide active">
+                    <img
+                        src="images/event-one.jpg"
+                        alt="Inkspire event"
+                    >
 
-        <button
-            class="events-arrow events-previous"
-            type="button"
-            aria-label="Previous event"
-        >
-            &#10094;
-        </button>
+                    <h3>
+                        Event Name
+                    </h3>
+                </div>
 
-        <button
-            class="events-arrow events-next"
-            type="button"
-            aria-label="Next event"
-        >
-            &#10095;
-        </button>
-    </div>
+                <div class="events-slide">
+                    <img
+                        src="images/event-two.jpg"
+                        alt="Inkspire library collaboration"
+                    >
 
-    <div class="events-dots">
-        <button class="events-dot active" type="button"></button>
-        <button class="events-dot" type="button"></button>
-        <button class="events-dot" type="button"></button>
-    </div>
-</section>
-</main>
+                    <h3>
+                        Library Collaboration
+                    </h3>
+                </div>
 
+                <div class="events-slide">
+                    <img
+                        src="images/event-three.jpg"
+                        alt="Inkspire community event"
+                    >
+
+                    <h3>
+                        Community Event
+                    </h3>
+                </div>
+
+                <button
+                    class="events-arrow events-previous"
+                    type="button"
+                    aria-label="Previous event"
+                >
+                    &#10094;
+                </button>
+
+                <button
+                    class="events-arrow events-next"
+                    type="button"
+                    aria-label="Next event"
+                >
+                    &#10095;
+                </button>
+
+            </div>
+
+            <div class="events-dots">
+                <button
+                    class="events-dot active"
+                    type="button"
+                    aria-label="Show event 1"
+                ></button>
+
+                <button
+                    class="events-dot"
+                    type="button"
+                    aria-label="Show event 2"
+                ></button>
+
+                <button
+                    class="events-dot"
+                    type="button"
+                    aria-label="Show event 3"
+                ></button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
     <footer>
-        <p>© 2026 DBHS Inkspire Club</p>
-        <p class="footer-credit">
-            Founders: Yinhang (Yulisa) Wu, ChaoYi (Jennifer) Wang
+        <p>
+            © 2026 DBHS Inkspire Club
         </p>
+
+        <p class="footer-credit">
+            Founders: Yinhang (Yulisa) Wu,
+            ChaoYi (Jennifer) Wang
+        </p>
+
         <p class="footer-credit">
             Creator of website: Yinhang (Yulisa) Wu
         </p>
     </footer>
-    
-<script src="./script.js?v=15"></script>
-<script src="./gallery.js?v=3"></script>
+
+<script src="./script.js?v=17"></script>
+<script src="./gallery.js?v=100"></script>
 
 </body>
 </html>
