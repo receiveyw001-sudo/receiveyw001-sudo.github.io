@@ -417,3 +417,18 @@ nameInput.disabled = false;
 nameInput.placeholder = "Name";
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    const nameInput = document.getElementById("name-input");
+    const sendButton = document.getElementById("send-message-button");
+
+    if (nameInput) {
+        nameInput.disabled = true;
+        nameInput.value = "";
+        nameInput.placeholder = "Name (Sign In Required)";
+    }
+
+    if (sendButton) {
+        sendButton.disabled = true;
+    }
+});
+
