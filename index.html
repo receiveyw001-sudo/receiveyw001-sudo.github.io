@@ -14,7 +14,7 @@
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="./style.css?v=21">
+    <link rel="stylesheet" href="./style.css?v=22">
 
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -285,8 +285,11 @@
         <input
             type="text"
             name="name"
-            placeholder="Name"
+            id="name-input"
+            placeholder="Name (Sign In Required)"
             required
+            disabled
+            autocomplete="off"
         >
     </label>
 
@@ -306,8 +309,7 @@
             data-theme="outline"
             data-text="signin_with"
             data-shape="rectangular"
-            data-logo_alignment="left"
-            data-width="355">
+            data-logo_alignment="left">
         </div>
     </div>
 

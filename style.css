@@ -1575,7 +1575,15 @@ button:disabled {
 .google-login-field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0px;
+}
+
+#g_id_onload {
+    display: none;
+}
+
+.signed-email-box {
+    margin: 0;
 }
 
 .google-login-field > span,
@@ -1669,4 +1677,42 @@ button:disabled {
 
 .signed-email-box[hidden] {
     display: none !important;
+}
+
+@media (max-width: 700px) {
+
+    .contact-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 18px;
+        width: 100%;
+    }
+
+    .contact-row > label,
+    .google-login-field {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .contact-row input[type="text"] {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    #googleButtonWrap {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .google-login-field .g_id_signin {
+        width: 100%;
+    }
+}
+
+/* locked name for contact form */
+
+#name-input:disabled {
+    background: #f3f1f1;
+    color: #aaa;
+    cursor: not-allowed;
 }

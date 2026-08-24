@@ -399,5 +399,16 @@ window.handleGoogleLogin = function (response) {
     document.getElementById("signedEmailBox").hidden = false;
 
     document.getElementById("send-message-button").disabled = false;
+
+    // Allow them to type their name now
+document.getElementById("name-input").disabled = false;
+
+document.getElementById("send-message-button").disabled = false;
 };
+
+const nameInput = document.getElementById("name-input");
+
+nameInput.disabled = false;
+nameInput.placeholder = "Name";
+
 
