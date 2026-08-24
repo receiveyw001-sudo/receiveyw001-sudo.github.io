@@ -968,6 +968,33 @@ button:disabled {
     margin-bottom: 20px;
 }
 
+.TiffanyPhoto {
+    object-position: center 20%;
+}
+
+.EllaPhoto {
+    object-position: 45% 18%;
+}
+
+.YulisaPhotoFrame {
+    width: 195px;
+    height: 195px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+}
+
+.YulisaPhotoFrame .YulisaPhoto {
+    width: 210px !important;
+    height: 210px !important;
+    max-width: none;
+    object-fit: cover;
+    border-radius: 0 !important;
+    margin: 0 !important;
+
+    transform: translateX(-15px);
+}
+
 .officer-card h3 {
     margin-bottom: 6px;
     font-size: 25px;
