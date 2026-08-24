@@ -398,6 +398,11 @@ window.handleGoogleLogin = function (response) {
     document.getElementById("googleButtonWrap").hidden = true;
     document.getElementById("signedEmailBox").hidden = false;
 
+    const nameInput = document.getElementById("name-input");
+
+    nameInput.disabled = false;
+    nameInput.placeholder = "Name";
+
     document.getElementById("send-message-button").disabled = false;
 
     // Allow them to type their name now
