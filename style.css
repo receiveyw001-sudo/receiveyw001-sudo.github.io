@@ -976,6 +976,10 @@ button:disabled {
     object-position: 45% 18%;
 }
 
+.TrinityPhoto {
+    object-position: center 20%;
+}
+
 .YulisaPhotoFrame {
     width: 195px;
     height: 195px;

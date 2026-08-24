@@ -129,7 +129,7 @@
 <div class="project-showcase">
     <div class="showcase-slide active">
         <img
-            src="images/cozy-afternoon.png"
+            src="images/ColoringPages/cozy-afternoon.png"
             alt="Cozy Afternoon artwork"
         >
         <h3>Cozy Afternoon--Yulisa Wu</h3>
@@ -137,35 +137,35 @@
 
     <div class="showcase-slide">
         <img
-            src="images/star-catcher.jpeg"
+            src="images/ColoringPages/star-catcher.jpeg"
             alt="Star Catcher coloring page"
         >
         <h3>Star Catcher--Jennifer Wang</h3>
     </div>
 
     <div class="showcase-slide">
-        <img src="images/Breakfast.png" 
+        <img src="images/ColoringPages/Breakfast.png" 
             alt="Cozy Breakfast coloring page"
         >
         <h3>Cozy Breakfast--Yulisa Wu</h3>
     </div>
 
     <div class="showcase-slide">
-        <img src="images/Bookmark.jpg" 
+        <img src="images/Bookmarks/Bookmark.jpg" 
             alt="Bookmark Designs"
         >
         <h3>Bookmark Designs--Jennifer Wang</h3>
     </div>
 
     <div class="showcase-slide">
-        <img src="images/Yul.jpg" 
+        <img src="images/Bookmarks/Yul.jpg" 
             alt="Bookmark Designs"
         >
         <h3>Bookmark Designs--Yulisa Wu</h3>
     </div>
 
  <div class="showcase-slide">
-        <img src="images/Jennifer11.png" 
+        <img src="images/ColoringPages/Jennifer11.png" 
             alt="Dream of a Raccoon coloring page"
         >
         <h3>Dream of a Raccoon--Jennifer Wang</h3>
@@ -287,15 +287,21 @@
                 >
             </label>
 
-            <label>
+            <div class="google-login-field">
                 <span>Email</span>
+
+                <div id="googleSignInButton"></div>
+
+                <p id="signedInEmail"></p>
+
                 <input
-                    type="email"
+                    type="hidden"
                     name="email"
-                    placeholder="Email"
+                    id="google-email"
                     required
                 >
-            </label>
+            </div>
+
         </div>
 
         <label>
@@ -308,7 +314,12 @@
             ></textarea>
         </label>
 
-        <button class="button" type="submit">
+        <button
+            class="button"
+            type="submit"
+            id="send-message-button"
+            disabled
+        >
             Send Message
         </button>
 
