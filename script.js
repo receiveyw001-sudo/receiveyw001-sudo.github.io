@@ -370,7 +370,7 @@ window.addEventListener("pageshow", function () {
     document.body.classList.remove("page-leaving");
 });
 
-function handleGoogleLogin(response) {
+window.handleGoogleLogin = function (response) {
     const base64Url = response.credential.split(".")[1];
 
     const base64 = base64Url
@@ -393,25 +393,11 @@ function handleGoogleLogin(response) {
 
     document.getElementById("google-email").value = email;
 
-    document.getElementById("signedInEmail").textContent =
-        "Signed in as " + email;
+    document.getElementById("signedInEmailText").textContent = email;
+
+    document.getElementById("googleButtonWrap").hidden = true;
+    document.getElementById("signedEmailBox").hidden = false;
 
     document.getElementById("send-message-button").disabled = false;
-}
-
-window.addEventListener("load", function () {
-    google.accounts.id.initialize({
-        client_id: "927637440478-m2e06ibemsi9bi6lk9afpbsje2q3e4eu.apps.googleusercontent.com",
-        callback: handleGoogleLogin
-    });
-
-    google.accounts.id.renderButton(
-        document.getElementById("googleSignInButton"),
-        {
-            theme: "outline",
-            size: "large",
-            text: "signin_with"
-        }
-    );
-});
+};
 

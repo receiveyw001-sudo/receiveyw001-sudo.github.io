@@ -15,6 +15,8 @@
     >
 
     <link rel="stylesheet" href="./style.css?v=21">
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 
@@ -277,32 +279,51 @@
     style="display:none"
 >
         <div class="contact-row">
-            <label>
-                <span>Name</span>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    required
-                >
-            </label>
 
-            <div class="google-login-field">
-                <span>Email</span>
+    <label>
+        <span>Name</span>
+        <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+        >
+    </label>
 
-                <div id="googleSignInButton"></div>
+    <div class="google-login-field">
+    <div
+        id="g_id_onload"
+        data-client_id="927637440478-m2e06ibemsi9bi6lk9afpbsje2q3e4eu.apps.googleusercontent.com"
+        data-callback="handleGoogleLogin"
+        data-auto_prompt="false">
+    </div>
 
-                <p id="signedInEmail"></p>
-
-                <input
-                    type="hidden"
-                    name="email"
-                    id="google-email"
-                    required
-                >
-            </div>
-
+    <div id="googleButtonWrap">
+        <div
+            class="g_id_signin"
+            data-type="standard"
+            data-size="large"
+            data-theme="outline"
+            data-text="signin_with"
+            data-shape="rectangular"
+            data-logo_alignment="left"
+            data-width="355">
         </div>
+    </div>
+
+    <div id="signedEmailBox" class="signed-email-box" hidden>
+        <span class="signed-check">✓</span>
+        <span id="signedInEmailText"></span>
+    </div>
+
+    <input
+        type="hidden"
+        name="email"
+        id="google-email"
+    >
+</div>
+
+</div>
 
         <label>
             <span>Message</span>
@@ -341,7 +362,7 @@
     </p>
 </footer>
 
-<script src="./script.js?v=12"></script>
+<script src="./script.js?v=13"></script>
 
 </body>
 </html>
