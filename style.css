@@ -1716,3 +1716,9 @@ button:disabled {
     color: #aaa;
     cursor: not-allowed;
 }
+
+/* contact us bold */
+#name-input::placeholder {
+    color: #999;
+    font-style: italic;
+}
