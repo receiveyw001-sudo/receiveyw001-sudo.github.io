@@ -1722,3 +1722,100 @@ button:disabled {
     color: #999;
     font-style: italic;
 }
+
+
+/*donation button style*/
+.donation-box {
+    display: block;
+    width: 320px;
+    margin-top: 25px;
+    padding: 24px;
+
+    background: #ffb3d2;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+    color: #292420;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.donation-box h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+
+/* hidden normally */
+
+.donation-hover-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        margin-top 0.3s ease;
+}
+
+
+/* SHOW when mouse is over the card */
+
+.donation-box:hover .donation-hover-content {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 12px;
+}
+
+
+.donation-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+.donation-hover-content p {
+    margin: 0 0 18px;
+    line-height: 1.6;
+}
+
+
+.donate-btn {
+    display: inline-block;
+
+    padding: 10px 20px;
+
+    background: #29231f;
+    color: #ffb3d2;
+
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+
+    .donation-box {
+        width: fit-content;
+        max-width: 100%;
+        padding: 16px 20px;
+    }
+
+    .donation-box h2 {
+        font-size: 20px;
+    }
+
+    /* phone users NEVER see the paragraph */
+    .donation-hover-content {
+        display: none;
+    }
+
+    .donation-box:hover {
+        transform: none;
+    }
+}
