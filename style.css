@@ -630,7 +630,7 @@ body.page-leaving {
     cursor: pointer;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .navbar {
         padding: 25px 24px;
         flex-wrap: wrap;
