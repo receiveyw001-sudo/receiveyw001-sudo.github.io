@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Inkspire Gallery</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="./style.css?v=22">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="gallery-header">
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a class="logo" href="index.html">
+                INKSPIRE
+            </a>
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+            <div class="nav-links">
+
+                <a href="index.html">
+                    HOME
+                </a>
+
+                <a href="index.html#projects">
+                    PROJECT OVERVIEW
+                </a>
+
+                <!-- Gallery dropdown -->
+                <div class="dropdown">
+                    <a
+                        class="drop-button"
+                        href="gallery.html"
+                    >
+                        GALLERY PROJECTS <span>⌄</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="gallery.html#artwork">
+                            Artwork
+                        </a>
+
+                        <a href="gallery.html#events">
+                            Events
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Events dropdown -->
+                 <div class="dropdown">
+                    <a
+                        class="drop-button"
+                        href="events.html"
+                    >
+                        EVENTS <span>⌄</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="events.html#library-collaboration">
+                            Library Collaboration
+                        </a>
+
+                        <a href="events.html#other-events">
+                            Others
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Officers dropdown -->
+                <div class="dropdown">
+                    <a
+                        class="drop-button"
+                        href="officers.html"
+                    >
+                        OFFICER SHOWCASES <span>⌄</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="officers.html#officers">
+                            Officers
+                        </a>
+
+                        <a href="officers.html#officer-work">
+                            Works
+                        </a>
+                    </div>
+                </div>
+
+                <a href="index.html#join">
+                    JOIN US
+                </a>
+
+                <!-- About dropdown -->
+                <div class="dropdown">
+                    <button
+                        class="drop-button"
+                        type="button"
+                    >
+                        ABOUT US <span>⌄</span>
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a href="index.html#about">
+                            Our Club
+                        </a>
+
+                        <a href="index.html#join">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <section class="hero">
+            <p class="label">
+                INKSPIRE EVENTS
+            </p>
+
+            <h2>
+                Our Events and Collaborations
+            </h2>
+
+            <p>
+                Explore our events and collaborations, where creativity meets community.
+                 We invite you to join us in celebrating the power of art and creativity!
+            </p>
+        </section>
+
+    </header>
+
+<main>
+
+    <section id="library-collaboration">
+
+        <h2>Library Collaboration</h2>
+
+        <div class="category-grid">
+
+            <!-- Event 1 -->
+            <div
+                id="oct-3-art-lesson"
+                class="gallery-category"
+            >
+
+                <div class="category-slideshow">
+
+                    <div class="category-showcase">
+
+                        <div class="category-slide active">
+                            <img
+                                src="images/events/10.3.1.png"
+                                alt="October 3 library art lesson"
+                            >
+                            <h3>10/3/26 Shade & Blend</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/10.3.5.png"
+                                alt="October 3 library art lesson"
+                            >
+                            <h3>10/3/26 Shade & Blend</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/10.3.2.png"
+                                alt="October 3 library art lesson"
+                            >
+                            <h3>10/3/26 Shade & Blend</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/10.3.4.png"
+                                alt="October 3 library art lesson"
+                            >
+                            <h3>10/3/26 Shade & Blend</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/10.3.3.png"
+                                alt="October 3 library art lesson"
+                            >
+                            <h3>10/3/26 Shade & Blend</h3>
+                        </div>
+
+
+                        <button
+                            class="category-arrow category-previous"
+                            type="button"
+                            aria-label="Previous image"
+                        >
+                            &#10094;
+                        </button>
+
+                        <button
+                            class="category-arrow category-next"
+                            type="button"
+                            aria-label="Next image"
+                        >
+                            &#10095;
+                        </button>
+
+                    </div>
+
+                    <div class="category-dots"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Event 2 -->
+            <div
+                id="library-event-2"
+                class="gallery-category"
+            >
+
+                <div class="category-slideshow">
+
+                    <div class="category-showcase">
+
+                        <div class="category-slide active">
+                            <img
+                                src="images/events/"
+                                alt="Library event 2"
+                            >
+                            <h3>Library Event 2</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/"
+                                alt="Library event 2"
+                            >
+                            <h3>Library Event 2</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/"
+                                alt="Library event 2"
+                            >
+                            <h3>Library Event 2</h3>
+                        </div>
+
+                        <button
+                            class="category-arrow category-previous"
+                            type="button"
+                            aria-label="Previous image"
+                        >
+                            &#10094;
+                        </button>
+
+                        <button
+                            class="category-arrow category-next"
+                            type="button"
+                            aria-label="Next image"
+                        >
+                            &#10095;
+                        </button>
+
+                    </div>
+
+                    <div class="category-dots"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Event 3 -->
+            <div
+                id="library-event-3"
+                class="gallery-category"
+            >
+
+                <div class="category-slideshow">
+
+                    <div class="category-showcase">
+
+                        <div class="category-slide active">
+                            <img
+                                src="images/events/"
+                                alt="Library event 3"
+                            >
+                            <h3>Library Event 3</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/"
+                                alt="Library event 3"
+                            >
+                            <h3>Library Event 3</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/"
+                                alt="Library event 3"
+                            >
+                            <h3>Library Event 3</h3>
+                        </div>
+
+                        <button
+                            class="category-arrow category-previous"
+                            type="button"
+                            aria-label="Previous image"
+                        >
+                            &#10094;
+                        </button>
+
+                        <button
+                            class="category-arrow category-next"
+                            type="button"
+                            aria-label="Next image"
+                        >
+                            &#10095;
+                        </button>
+
+                    </div>
+
+                    <div class="category-dots"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Event 4 -->
+            <div
+                id="library-event-4"
+                class="gallery-category"
+            >
+
+                <div class="category-slideshow">
+
+                    <div class="category-showcase">
+
+                        <div class="category-slide active">
+                            <img
+                                src="images/events/"
+                                alt="Library event 4"
+                            >
+                            <h3>Library Event 4</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/"
+                                alt="Library event 4"
+                            >
+                            <h3>Library Event 4</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img
+                                src="images/events/"
+                                alt="Library event 4"
+                            >
+                            <h3>Library Event 4</h3>
+                        </div>
+
+                        <button
+                            class="category-arrow category-previous"
+                            type="button"
+                            aria-label="Previous image"
+                        >
+                            &#10094;
+                        </button>
+
+                        <button
+                            class="category-arrow category-next"
+                            type="button"
+                            aria-label="Next image"
+                        >
+                            &#10095;
+                        </button>
+
+                    </div>
+
+                    <div class="category-dots"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+  <!-- Others -->
+    <section id="other-events">
+
+        <h2>Others</h2>
+
+        <div class="category-grid">
+
+            <!-- Other Event 1 -->
+            <div class="gallery-category">
+                <div class="category-slideshow">
+                    <div class="category-showcase">
+
+                        <div class="category-slide active">
+                            <img src="images/events/other1-1.png" alt="">
+                            <h3>Other Event 1</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img src="images/events/other1-2.png" alt="">
+                            <h3>Other Event 1</h3>
+                        </div>
+
+                        <button class="category-arrow category-previous" type="button">
+                            &#10094;
+                        </button>
+
+                        <button class="category-arrow category-next" type="button">
+                            &#10095;
+                        </button>
+
+                    </div>
+
+                    <div class="category-dots"></div>
+                </div>
+            </div>
+
+
+            <!-- Other Event 2 -->
+            <div class="gallery-category">
+                <div class="category-slideshow">
+                    <div class="category-showcase">
+
+                        <div class="category-slide active">
+                            <img src="images/events/other2-1.png" alt="">
+                            <h3>Other Event 2</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img src="images/events/other2-2.png" alt="">
+                            <h3>Other Event 2</h3>
+                        </div>
+
+                        <button class="category-arrow category-previous" type="button">
+                            &#10094;
+                        </button>
+
+                        <button class="category-arrow category-next" type="button">
+                            &#10095;
+                        </button>
+
+                    </div>
+
+                    <div class="category-dots"></div>
+                </div>
+            </div>
+
+
+            <!-- Other Event 3 -->
+            <div class="gallery-category">
+                <div class="category-slideshow">
+                    <div class="category-showcase">
+
+                        <div class="category-slide active">
+                            <img src="images/events/other3-1.png" alt="">
+                            <h3>Other Event 3</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img src="images/events/other3-2.png" alt="">
+                            <h3>Other Event 3</h3>
+                        </div>
+
+                        <button class="category-arrow category-previous" type="button">
+                            &#10094;
+                        </button>
+
+                        <button class="category-arrow category-next" type="button">
+                            &#10095;
+                        </button>
+
+                    </div>
+
+                    <div class="category-dots"></div>
+                </div>
+            </div>
+
+
+            <!-- Other Event 4 -->
+            <div class="gallery-category">
+                <div class="category-slideshow">
+                    <div class="category-showcase">
+
+                        <div class="category-slide active">
+                            <img src="images/events/other4-1.png" alt="">
+                            <h3>Other Event 4</h3>
+                        </div>
+
+                        <div class="category-slide">
+                            <img src="images/events/other4-2.png" alt="">
+                            <h3>Other Event 4</h3>
+                        </div>
+
+                        <button class="category-arrow category-previous" type="button">
+                            &#10094;
+                        </button>
+
+                        <button class="category-arrow category-next" type="button">
+                            &#10095;
+                        </button>
+
+                    </div>
+
+                    <div class="category-dots"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © 2026 DBHS Inkspire Club
+        </p>
+
+        <p class="footer-credit">
+            Founders: Yinhang (Yulisa) Wu,
+            ChaoYi (Jennifer) Wang
+        </p>
+
+        <p class="footer-credit">
+            Creator of website: Yinhang (Yulisa) Wu
+        </p>
+    </footer>
+
+<script src="./script.js?v=17"></script>
+<script src="./gallery.js?v=100"></script>
+
+</body>
+</html>
